@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+
+def run_experiment(visc, gamma, tau, sigma, N, s, ntrain, ntest, epochs, batch_size, learning_rate, modes, width):
+    # ... (your existing experiment code)
+    # Return the metric of interest, e.g., minimum test loss
+    return min_test_loss
+
+# Define the range of visc values to test
+visc_values = [10/1000, 15/1000, 20/1000, 25/1000, 30/1000]
+test_losses = []
+
+# Run experiments for each visc value
+for visc in visc_values:
+    print(f"Running experiment with visc = {visc}")
+    min_test_loss = run_experiment(visc, 2.5, 7, 49, 256, 8192, 200, 20, 200, 20, 0.001, 16, 64)
+    test_losses.append(min_test_loss)
+    print(f"Minimum Test Loss for visc = {visc}: {min_test_loss}")
+
+# Plotting the results
+plt.plot(visc_values, test_losses, marker='o')
+plt.xlabel('Viscosity (visc)')
+plt.ylabel('Minimum Test Loss')
+plt.title('Effect of Viscosity on Test Loss')
+plt.grid(True)
+plt.show()
